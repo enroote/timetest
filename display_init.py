@@ -25,10 +25,13 @@ row2 = 380
 col1 = 35
 col2 = 140
 
+clock_row = 135
+
+
 # Initialize the display
 epd = epd3in7.EPD()
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 # time 
 
@@ -129,9 +132,9 @@ def update_time(show_seconds=True):
             while True:
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
                 if show_seconds==True:
-                    time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
+                    time_draw.text((col1, clock_row), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
                 if show_seconds==False:
-                    time_draw.text((20, 20), time.strftime('%H:%M'), font=font_clock, fill=0)
+                    time_draw.text((col1, clock_row), time.strftime('%H:%M'), font=font_clock, fill=0)
 
                 time_draw.text((50, 100), time.strftime('%d. %B %y'), font=font_date, fill=0)
 

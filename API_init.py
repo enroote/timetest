@@ -15,7 +15,7 @@ credentials = Credentials.from_service_account_file(CREDS_FILE, scopes=SCOPE)
 service = build('sheets', 'v4', credentials=credentials)
 sheet = service.spreadsheets()
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 def fetch_data_from_Google():
