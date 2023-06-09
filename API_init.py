@@ -1,6 +1,7 @@
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 import logging
+from datetime import datetime, date, timedelta
 
 # Google Sheets API credentials
 SCOPE = ['https://www.googleapis.com/auth/spreadsheets.readonly']
