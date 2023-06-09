@@ -114,7 +114,7 @@ def display_image_and_time(image_path):
         #time.sleep(5)
 
         # Update the time
-        update_time(critical_time=time1, show_seconds=sec_)
+        update_time(next_tide_time=time1, show_seconds=sec_)
         logging.info("Done updating time.")
         #time.sleep(5)
 
@@ -148,6 +148,7 @@ def update_time(show_seconds=True,next_tide_time=datetime.now()):
 
             while True: # ehemals while True 
                 
+                epd.init(1)
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
                 if show_seconds==True:
@@ -159,7 +160,7 @@ def update_time(show_seconds=True,next_tide_time=datetime.now()):
                 time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
 
                 epd.display_1Gray(epd.getbuffer(time_image))
-                epd.sleep()
+                epd.sleep(1)
                 logging.info("Putting display to sleep")
 
 
