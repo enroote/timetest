@@ -25,7 +25,7 @@ row2 = 380
 col1 = 35
 col2 = 140
 
-row_clock = 135
+row_clock = 130
 row_date = 200
 
 
@@ -42,7 +42,7 @@ font_thin = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 
 font_times = ImageFont.truetype(font_thin, 32)
 font_date  = ImageFont.truetype(font_thin, 36)
-font_clock = ImageFont.truetype(font_bold, 60)
+font_clock = ImageFont.truetype(font_bold, 64)
 
 flut_icon_path = '//home/pi/foehr_credentials/icons/flut.jpg'
 ebbe_icon_path = '/home/pi/foehr_credentials/icons/ebbe.jpg'
