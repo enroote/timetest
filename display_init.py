@@ -12,7 +12,7 @@ import RPi.GPIO as GPIO
 #loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
 # time: show seconds?
-sec_ = True
+sec_ = False
 
 # Set up the GPIO channel
 GPIO.setmode(GPIO.BCM)
