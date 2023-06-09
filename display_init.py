@@ -41,6 +41,7 @@ font_time = ImageFont.truetype(font_thin, 45)
 # Prepare a canvas to draw on
 Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
 
+
 def display_image_and_time(image_path):
     try:
         tide_data = fetch_data_from_Google()
@@ -65,12 +66,13 @@ def display_image_and_time(image_path):
 
         # Create a new image with white background
         Himage = Image.new("1", (epd.width, epd.height), 255)
+        draw = ImageDraw.Draw(Himage)
         logging.info("Done creating image.")
         time.sleep(5)
 
         # Paste the resized image onto the white background
         Himage.paste(img, (0, 0))
-        Himage.text((200,250), tide1, font=font28, fill=0)
+        draw.text((200, 250), tide1, font=font28, fill=0)
         logging.info("Done pasting image.")
         time.sleep(5)
 
@@ -92,7 +94,6 @@ def display_image_and_time(image_path):
         
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
-
 
 
 def update_time(show_seconds=True):
