@@ -5,10 +5,7 @@ import logging
 from display_init import display_image_and_time
 from waveshare_epd import epd3in7
 from clear_display import clear_all
-#import locale as loc
 
-
-#loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
 try:
     # Specify the image path
