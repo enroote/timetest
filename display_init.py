@@ -7,9 +7,10 @@ import time
 import os
 import logging
 import RPi.GPIO as GPIO
-#import locale as loc
+from API_init import fetch_data_from_Google
 
-#loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
+#import locale as loc
+loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
 # time: show seconds?
 sec_ = True
@@ -36,11 +37,16 @@ font32 = ImageFont.truetype(font_bold, 32)
 font_date = ImageFont.truetype(font_thin, 36)
 font_time = ImageFont.truetype(font_thin, 45)
 
+
 # Prepare a canvas to draw on
 Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
 
 def display_image_and_time(image_path):
     try:
+        logging.info("Fetching data")
+        tide_data = fetch_data_from_Google()
+        tide1, tide2, time1, time2 = tide_data
+
         # Resize the image
         img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
         #img = img.resize((20, epd.height), Image.ANTIALIAS)
@@ -54,6 +60,7 @@ def display_image_and_time(image_path):
 
         # Paste the resized image onto the white background
         Himage.paste(img, (0, 0))
+        Himage.text((200,250), tide1, font=font28, fill=0)
 
         # Clear the display
         epd.init(1)  # 1 Gray mode
