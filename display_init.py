@@ -38,9 +38,9 @@ font_thin = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 
 font24 = ImageFont.truetype(font_bold, 24)
 font28 = ImageFont.truetype(font_bold, 28)
-font32 = ImageFont.truetype(font_bold, 32)
-font_date = ImageFont.truetype(font_thin, 36)
-font_time = ImageFont.truetype(font_thin, 45)
+font_times = ImageFont.truetype(font_thin, 32)
+font_date  = ImageFont.truetype(font_thin, 36)
+font_clock = ImageFont.truetype(font_thin, 45)
 
 flut_icon_path = '//home/pi/foehr_credentials/icons/flut.jpg'
 ebbe_icon_path = '/home/pi/foehr_credentials/icons/ebbe.jpg'
@@ -132,9 +132,9 @@ def update_time(show_seconds=True):
             while True:
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
                 if show_seconds==True:
-                    time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_time, fill=0)
+                    time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
                 if show_seconds==False:
-                    time_draw.text((20, 20), time.strftime('%H:%M'), font=font_time, fill=0)
+                    time_draw.text((20, 20), time.strftime('%H:%M'), font=font_clock, fill=0)
 
                 time_draw.text((50, 100), time.strftime('%d. %B %y'), font=font_date, fill=0)
 

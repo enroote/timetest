@@ -5,7 +5,7 @@ from datetime import datetime, date, timedelta
 
 # Google Sheets API credentials
 SCOPE = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-CREDS_FILE = '/home/pi/foehr/client_secret.json'  # Update with your credentials file path
+CREDS_FILE = '/home/pi/foehr_credentials/client_secret.json'  # Update with your credentials file path
 SPREADSHEET_ID = '1wlNa6wFahS_dpV6Qav5nk4iLkFCXIWOEgsqbFsSUtnY'  # Update with the ID of the "next_4_tides" spreadsheet
 SHEET_NAME = 'display HW NW'  # Update with the name of the sheet containing the desired data
 RANGE = f"{SHEET_NAME}!A2:G5"  # Specify the sheet name and range of cells
