@@ -41,7 +41,7 @@ font_bold = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 font_sans = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 font_thin = '/home/pi/foehr_credentials/DejaVuSans-ExtraLight.ttf'
 
-font_times = ImageFont.truetype(font_sans, 32)
+font_times = ImageFont.truetype(font_bold, 32)
 font_date  = ImageFont.truetype(font_thin, 36)
 font_clock = ImageFont.truetype(font_bold, 64)
 
