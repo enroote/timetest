@@ -41,25 +41,25 @@ def get_tide_label(cell_value):
     else:
         return ""
     
-    # Call the function
-data = fetch_data_from_Google()
+# Call the function
+# data = fetch_data_from_Google()
 
-if data:
-    tide1, tide2, time1, time2 = data
+# if data:
+#     tide1, tide2, time1, time2 = data
     
-    # Print the fetched data
-    print("Tide 1:", tide1)
-    print("Tide 2:", tide2)
-    print("Time 1:", time1)
-    print("Time 2:", time2)
+#     # Print the fetched data
+#     print("Tide 1:", tide1)
+#     print("Tide 2:", tide2)
+#     print("Time 1:", time1)
+#     print("Time 2:", time2)
 
-    # Prompt for user input to confirm proceeding
-    answer = input("Do you want to proceed? (y/n): ")
-    if answer.lower() == "y":
-        # Proceed with further steps
-        print("Proceeding with the next steps...")
-    else:
-        print("Process aborted.")
+#     # Prompt for user input to confirm proceeding
+#     answer = input("Do you want to proceed? (y/n): ")
+#     if answer.lower() == "y":
+#         # Proceed with further steps
+#         print("Proceeding with the next steps...")
+#     else:
+#         print("Process aborted.")
 
-else:
-    print("Failed to fetch data from Google Sheets.")
+# else:
+#     print("Failed to fetch data from Google Sheets.")
