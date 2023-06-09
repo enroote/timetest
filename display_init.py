@@ -19,6 +19,11 @@ sec_ = True
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+row1 = 295
+row2 = 380
+
+col1 = 35
+col2 = 160
 
 # Initialize the display
 epd = epd3in7.EPD()
@@ -81,12 +86,12 @@ def display_image_and_time(image_path):
         draw.text((150, 430), time2, font=font32, fill=0)
 
         if tide1 =="Ebbe":
-            Himage.paste(ebbe_icon, (50, 345))
-            Himage.paste(flut_icon, (50, 430))
+            Himage.paste(ebbe_icon, (col1, row1))
+            Himage.paste(flut_icon, (col1, row2))
 
         if tide1 =="Flut":
-            Himage.paste(flut_icon, (50, 345))
-            Himage.paste(ebbe_icon, (50, 430))
+            Himage.paste(flut_icon, (col1, row1))
+            Himage.paste(ebbe_icon, (col1, row1))
 
         logging.info("Done pasting image.")
         #time.sleep(5)
