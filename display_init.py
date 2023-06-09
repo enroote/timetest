@@ -82,8 +82,8 @@ def display_image_and_time(image_path):
 
         # Paste the resized image onto the white background
         Himage.paste(img, (0, 0))
-        draw.text((col2, row1), time1, font=font32, fill=0)
-        draw.text((col2, row2), time2, font=font32, fill=0)
+        draw.text((col2, row1-20), time1, font=font32, fill=0)
+        draw.text((col2, row2-20), time2, font=font32, fill=0)
 
         print(f"Jetzt ist gerade {tide1}")
 
@@ -92,8 +92,8 @@ def display_image_and_time(image_path):
             Himage.paste(flut_icon, (col1, row2))
 
         if tide1 =="Flut":
-            Himage.paste(flut_icon, (col1, row1+20))
-            Himage.paste(ebbe_icon, (col1, row2-20))
+            Himage.paste(flut_icon, (col1, row1))
+            Himage.paste(ebbe_icon, (col1, row2))
 
         logging.info("Done pasting image.")
         #time.sleep(5)
