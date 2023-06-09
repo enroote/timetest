@@ -23,7 +23,7 @@ row1 = 295
 row2 = 380
 
 col1 = 35
-col2 = 160
+col2 = 140
 
 # Initialize the display
 epd = epd3in7.EPD()
@@ -86,15 +86,14 @@ def display_image_and_time(image_path):
         draw.text((col2, row2), time2, font=font32, fill=0)
 
         print(f"Jetzt ist gerade {tide1}")
-        time.sleep(10)
 
         if tide1 =="Ebbe":
             Himage.paste(ebbe_icon, (col1, row1))
             Himage.paste(flut_icon, (col1, row2))
 
         if tide1 =="Flut":
-            Himage.paste(flut_icon, (col1, row1))
-            Himage.paste(ebbe_icon, (col1, row2))
+            Himage.paste(flut_icon, (col1, row1+20))
+            Himage.paste(ebbe_icon, (col1, row2-20))
 
         logging.info("Done pasting image.")
         #time.sleep(5)
