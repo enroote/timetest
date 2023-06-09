@@ -25,8 +25,8 @@ row2 = 380
 col1 = 35
 col2 = 140
 
-row_clock = 120
-row_date = 200
+row_clock = 123
+row_date = 195
 
 
 # Initialize the display
