@@ -124,9 +124,9 @@ def display_image_and_time(image_path):
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
-def update_time(show_seconds=True,next_tide_time=datetime.now()):
+def update_time(show_seconds=True,next_tide_time=None):
     if next_tide_time is None:
-        next_tide_time = datetime.now()  # Set the default critical time to the current time
+        next_tide_time = datetime.now()  # Set the default next_tide_time_ to the current time. Just in case. To have a value
     _now_ = datetime.now()
 
     while True:
@@ -139,10 +139,9 @@ def update_time(show_seconds=True,next_tide_time=datetime.now()):
             time_image = Image.new('1', (epd.width, epd.height), 255)
             time_draw = ImageDraw.Draw(time_image)
 
-            #critical_time_ = datetime.strptime(critical_time, "%H:%M")
 
-            # Convert critical_time to datetime object
-            if isinstance(critical_time, str):
+            # Convert next_tide_time_ to datetime object
+            if isinstance(next_tide_time_, str):
                 next_tide_time_ = datetime.strptime(next_tide_time, "%H:%M")
                 logging.info(f"critical_time > _now_: {next_tide_time < _now_}") # 
 
