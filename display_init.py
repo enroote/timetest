@@ -131,8 +131,11 @@ def update_time(show_seconds=True):
             epd.Clear(0xFF, 1)
             time_image = Image.new('1', (epd.width, epd.height), 255)
             time_draw = ImageDraw.Draw(time_image)
-            num = 0
-            while True:
+            
+            current_time = datetime.now()
+            print(current_time < time1)
+            time.sleep(10)
+            while current_time < time1): # ehemals while True 
                 
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
