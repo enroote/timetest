@@ -124,9 +124,10 @@ def display_image_and_time(image_path):
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
-def update_time(show_seconds=True,critical_time=datetime.now()):
-    if critical_time is None:
-        critical_time = datetime.now()  # Set the default critical time to the current time
+def update_time(show_seconds=True,next_tide_time=datetime.now()):
+    if next_tide_time is None:
+        next_tide_time = datetime.now()  # Set the default critical time to the current time
+    _now_ = datetime.now()
 
     while True:
         try:
@@ -142,8 +143,8 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
 
             # Convert critical_time to datetime object
             if isinstance(critical_time, str):
-                critical_time = datetime.strptime(critical_time, "%H:%M")
-                logging.info(f"datetime.now() >= critical_time: {datetime.now() >= critical_time:}") # 
+                next_tide_time_ = datetime.strptime(next_tide_time, "%H:%M")
+                logging.info(f"critical_time > _now_: {next_tide_time < _now_}") # 
 
             while True: # ehemals while True 
                 
@@ -162,7 +163,7 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
                 logging.info("Putting display to sleep")
 
 
-                while critical_time_ > datetime.now(): # ehemals while True 
+                while next_tide_time_ < _now_: # ehemals while True 
                     sleep(10)
                     logging.info("sleeping")
 
