@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 from API_init import fetch_data_from_Google
 
 #import locale as loc
-loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
+#loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
 # time: show seconds?
 sec_ = True
