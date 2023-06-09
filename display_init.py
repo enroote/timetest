@@ -11,7 +11,7 @@ import RPi.GPIO as GPIO
 
 #loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
-
+#YESYESYES!
 
 # Set up the GPIO channel
 GPIO.setmode(GPIO.BCM)
