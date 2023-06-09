@@ -165,7 +165,7 @@ def display_image_and_time(image_path):
         #time.sleep(5)
 
         # Update the time
-        update_time(next_tide_time=time1, show_seconds=sec_)
+        update_time(next_tide_time=tide_data[0] , show_seconds=sec_)
         logging.info("Done updating time.")
         #time.sleep(5)
 
