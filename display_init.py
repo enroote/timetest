@@ -85,6 +85,9 @@ def display_image_and_time(image_path):
         draw.text((150, 345), time1, font=font32, fill=0)
         draw.text((150, 430), time2, font=font32, fill=0)
 
+        print(f"Jetzt ist gerade {tide1}")
+        time.sleep(10)
+
         if tide1 =="Ebbe":
             Himage.paste(ebbe_icon, (col1, row1))
             Himage.paste(flut_icon, (col1, row2))
