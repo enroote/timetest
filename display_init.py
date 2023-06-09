@@ -25,7 +25,7 @@ row2 = 380
 col1 = 35
 col2 = 140
 
-row_clock = 130
+row_clock = 120
 row_date = 200
 
 
@@ -38,9 +38,10 @@ logging.basicConfig(level=logging.INFO)
 
 # Load the font
 font_bold = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
-font_thin = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+font_sans = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+font_thin = '/home/pi/foehr_credentials/DejaVuSans-ExtraLight.ttf'
 
-font_times = ImageFont.truetype(font_thin, 32)
+font_times = ImageFont.truetype(font_sans, 32)
 font_date  = ImageFont.truetype(font_thin, 36)
 font_clock = ImageFont.truetype(font_bold, 64)
 
