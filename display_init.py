@@ -53,6 +53,57 @@ ebbe_icon_path = '/home/pi/foehr_credentials/icons/ebbe.jpg'
 # Prepare a canvas to draw on
 Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
 
+def update_time(show_seconds=True,next_tide_time=datetime.now()):
+    if next_tide_time is None:
+        next_tide_time = datetime.now()  # Set the default next_tide_time_ to the current time. Just in case. To have a value
+    _now_ = datetime.now()
+
+    while True:
+        try:
+            logging.info("5.show time, partial update, just 1 Gray mode")
+            GPIO.setup(17, GPIO.OUT)  # Set up the GPIO channel for the busy pin (replace 17 with the actual GPIO pin number)
+            GPIO.output(17, GPIO.LOW)  # Set the busy pin to low (replace 17 with the actual GPIO pin number)
+            epd.init(1)  # 1 Gray mode
+            epd.Clear(0xFF, 1)
+            time_image = Image.new('1', (epd.width, epd.height), 255)
+            time_draw = ImageDraw.Draw(time_image)
+
+
+            # Convert next_tide_time_ to datetime object
+            if isinstance(next_tide_time_, str):
+                next_tide_time_ = datetime.strptime(next_tide_time, "%H:%M")
+                logging.info(f"critical_time > _now_: {next_tide_time < _now_}") # 
+
+            while True: # ehemals while True 
+                
+                epd.init(1)
+                # date
+                time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
+                if show_seconds==True:
+                    time_draw.text((col1, row_clock), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
+                if show_seconds==False:
+                    time_draw.text((col1, row_clock), time.strftime('%H:%M'), font=font_clock, fill=0)
+
+                # date
+                time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
+
+                epd.display_1Gray(epd.getbuffer(time_image))
+                epd.sleep(1)
+                logging.info("Putting display to sleep")
+
+
+                while next_tide_time_ < _now_: # ehemals while True 
+                    sleep(10)
+                    logging.info("sleeping")
+
+            logging.info("Clear...")
+            epd.init(0)  # Initialize the display
+            epd.Clear(0xFF, 0)
+        except Exception as e:
+            logging.error(f"Error occurred while updating time: {e}")
+
+
+
 def display_image_and_time(image_path):
     try:
         tide_data = fetch_data_from_Google()
@@ -122,56 +173,6 @@ def display_image_and_time(image_path):
         
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
-
-
-def update_time(show_seconds=True,next_tide_time=time1):
-    if next_tide_time is None:
-        next_tide_time = datetime.now()  # Set the default next_tide_time_ to the current time. Just in case. To have a value
-    _now_ = datetime.now()
-
-    while True:
-        try:
-            logging.info("5.show time, partial update, just 1 Gray mode")
-            GPIO.setup(17, GPIO.OUT)  # Set up the GPIO channel for the busy pin (replace 17 with the actual GPIO pin number)
-            GPIO.output(17, GPIO.LOW)  # Set the busy pin to low (replace 17 with the actual GPIO pin number)
-            epd.init(1)  # 1 Gray mode
-            epd.Clear(0xFF, 1)
-            time_image = Image.new('1', (epd.width, epd.height), 255)
-            time_draw = ImageDraw.Draw(time_image)
-
-
-            # Convert next_tide_time_ to datetime object
-            if isinstance(next_tide_time_, str):
-                next_tide_time_ = datetime.strptime(next_tide_time, "%H:%M")
-                logging.info(f"critical_time > _now_: {next_tide_time < _now_}") # 
-
-            while True: # ehemals while True 
-                
-                epd.init(1)
-                # date
-                time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
-                if show_seconds==True:
-                    time_draw.text((col1, row_clock), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
-                if show_seconds==False:
-                    time_draw.text((col1, row_clock), time.strftime('%H:%M'), font=font_clock, fill=0)
-
-                # date
-                time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
-
-                epd.display_1Gray(epd.getbuffer(time_image))
-                epd.sleep(1)
-                logging.info("Putting display to sleep")
-
-
-                while next_tide_time_ < _now_: # ehemals while True 
-                    sleep(10)
-                    logging.info("sleeping")
-
-            logging.info("Clear...")
-            epd.init(0)  # Initialize the display
-            epd.Clear(0xFF, 0)
-        except Exception as e:
-            logging.error(f"Error occurred while updating time: {e}")
 
 def cleanup():
     try:
