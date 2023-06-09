@@ -138,7 +138,7 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
             critical_time = datetime.strptime(critical_time, "%H:%M")
             logging.info(f"datetime.now() <= critical_time: {datetime.now() <= critical_time:}") # 
 
-            while datetime.now() <= critical_time: # ehemals while True 
+            while datetime.now() >= critical_time: # ehemals while True 
                 
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
