@@ -136,6 +136,7 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
             time_draw = ImageDraw.Draw(time_image)
 
             critical_time = critical_time.strptime(critical_time, "%H:%M")
+            print f"datetime.now() <= critical_time: {datetime.now() <= critical_time:}" # 
 
             while datetime.now() <= critical_time: # ehemals while True 
                 
