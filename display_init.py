@@ -72,8 +72,8 @@ def display_image_and_time(image_path):
 
         # Paste the resized image onto the white background
         Himage.paste(img, (0, 0))
-        draw.text((150, 250), time1, font=font32, fill=0)
-        draw.text((150, 450), time2, font=font32, fill=0)
+        draw.text((150, 345), time1, font=font32, fill=0)
+        draw.text((150, 430), time2, font=font32, fill=0)
 
         logging.info("Done pasting image.")
         #time.sleep(5)
