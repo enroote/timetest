@@ -37,6 +37,9 @@ font32 = ImageFont.truetype(font_bold, 32)
 font_date = ImageFont.truetype(font_thin, 36)
 font_time = ImageFont.truetype(font_thin, 45)
 
+flut_icon_path = '/icons/flut.jpg'
+ebbe_icon_path = '/icons/ebbe.jpg'
+
 
 # Prepare a canvas to draw on
 Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
@@ -52,9 +55,11 @@ def display_image_and_time(image_path):
         logging.info("Done storing data. Creating image ...")
         #time.sleep(5)
 
-        # Resize the image
+        # Background image
         img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
-        #img = img.resize((20, epd.height), Image.ANTIALIAS)
+        flut_icon = Image.open(flut_icon_path).convert("1")  # Convert image to 1 bit color
+        ebbe_icon = Image.open(ebbe_icon_path).convert("1")  # Convert image to 1 bit color
+
         logging.info("Done resizing image.")
         #ime.sleep(5)
 
@@ -74,6 +79,14 @@ def display_image_and_time(image_path):
         Himage.paste(img, (0, 0))
         draw.text((150, 345), time1, font=font32, fill=0)
         draw.text((150, 430), time2, font=font32, fill=0)
+
+        if tide1 =="Ebbe":
+            Himage.paste(ebbe_icon, (50, 345))
+            Himage.paste(flut_icon, (50, 430))
+
+        if tide1 =="Flut":
+            Himage.paste(flut_icon, (50, 345))
+            Himage.paste(ebbe_icon, (50, 430))
 
         logging.info("Done pasting image.")
         #time.sleep(5)
