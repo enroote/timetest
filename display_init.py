@@ -46,7 +46,7 @@ def display_image_and_time(image_path):
         tide_data = fetch_data_from_Google()
         logging.info("Done fetching data. Storing data now ...")
         time.sleep(5)
-        
+
         tide1, tide2, time1, time2 = tide_data
         logging.info("Done storing data. Creating image ...")
         time.sleep(5)
@@ -54,28 +54,42 @@ def display_image_and_time(image_path):
         # Resize the image
         img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
         #img = img.resize((20, epd.height), Image.ANTIALIAS)
+        logging.info("Done resizing image.")
+        time.sleep(5)
 
         # Clear the display
         epd.init(1)  # 1 Gray mode
         epd.Clear(0xFF, 1)
-        
+        logging.info("Done clearing display.")
+        time.sleep(5)
+
         # Create a new image with white background
         Himage = Image.new("1", (epd.width, epd.height), 255)
+        logging.info("Done creating image.")
+        time.sleep(5)
 
         # Paste the resized image onto the white background
         Himage.paste(img, (0, 0))
         Himage.text((200,250), tide1, font=font28, fill=0)
+        logging.info("Done pasting image.")
+        time.sleep(5)
 
         # Clear the display
         epd.init(1)  # 1 Gray mode
         epd.Clear(0xFF, 1)
+        logging.info("Done clearing display again.")
+        time.sleep(5)
 
         # Display the image
         epd.display_1Gray(epd.getbuffer(Himage))
+        logging.info("Done displaying image.")
+        time.sleep(5)
 
         # Update the time
         update_time(show_seconds=sec_)
-
+        logging.info("Done updating time.")
+        time.sleep(5)
+        
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
 
