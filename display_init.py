@@ -62,7 +62,7 @@ def display_image_and_time(image_path):
         epd.display_1Gray(epd.getbuffer(Himage))
 
         # Update the time
-        update_time(show_seconds=False)
+        update_time(show_seconds=True)
 
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
