@@ -37,8 +37,8 @@ font32 = ImageFont.truetype(font_bold, 32)
 font_date = ImageFont.truetype(font_thin, 36)
 font_time = ImageFont.truetype(font_thin, 45)
 
-flut_icon_path = '/home/pi/timetest/icons/flut.jpg'
-ebbe_icon_path = '/home/pi/timetest/icons/ebbe.jpg'
+flut_icon_path = '//home/pi/foehr_credentials/icons/flut.jpg'
+ebbe_icon_path = '/home/pi/foehr_credentials/icons/ebbe.jpg'
 
 
 # Prepare a canvas to draw on
