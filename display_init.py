@@ -43,9 +43,13 @@ Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
 
 def display_image_and_time(image_path):
     try:
-        logging.info("Fetching data")
         tide_data = fetch_data_from_Google()
+        logging.info("Done fetching data. Storing data now ...")
+        time.sleep(5)
+        
         tide1, tide2, time1, time2 = tide_data
+        logging.info("Done storing data. Creating image ...")
+        time.sleep(5)
 
         # Resize the image
         img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
