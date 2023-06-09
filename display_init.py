@@ -28,6 +28,7 @@ col2 = 140
 row_clock = 123
 row_date = 195
 
+date_format ="%d.%m.%y"
 
 # Initialize the display
 epd = epd3in7.EPD()
@@ -132,13 +133,16 @@ def update_time(show_seconds=True):
             time_draw = ImageDraw.Draw(time_image)
             num = 0
             while True:
+                
+                # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
                 if show_seconds==True:
                     time_draw.text((col1, row_clock), time.strftime('%H:%M:%S'), font=font_clock, fill=0)
                 if show_seconds==False:
                     time_draw.text((col1, row_clock), time.strftime('%H:%M'), font=font_clock, fill=0)
 
-                time_draw.text((col1, row_date), time.strftime('%d. %B %y'), font=font_date, fill=0)
+                # date
+                time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
 
                 epd.display_1Gray(epd.getbuffer(time_image))
 
