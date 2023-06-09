@@ -114,7 +114,7 @@ def display_image_and_time(image_path):
         #time.sleep(5)
 
         # Update the time
-        update_time(show_seconds=sec_, time1)
+        update_time(critical_time=time1, show_seconds=sec_)
         logging.info("Done updating time.")
         #time.sleep(5)
 
@@ -124,7 +124,7 @@ def display_image_and_time(image_path):
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
-def update_time(critical_time, show_seconds=True):
+def update_time(show_seconds=True,critical_time):
     while True:
         try:
             logging.info("5.show time, partial update, just 1 Gray mode")
