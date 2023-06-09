@@ -136,9 +136,9 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
             time_draw = ImageDraw.Draw(time_image)
 
             critical_time = datetime.strptime(critical_time, "%H:%M")
-            logging.info(f"datetime.now() <= critical_time: {datetime.now() <= critical_time:}") # 
+            logging.info(f"datetime.now() <= critical_time: {datetime.now() >= critical_time:}") # 
 
-            while datetime.now() >= critical_time: # ehemals while True 
+            while True: # ehemals while True 
                 
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
@@ -151,6 +151,10 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
                 time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
 
                 epd.display_1Gray(epd.getbuffer(time_image))
+            
+                while datetime.now() >= critical_time: # ehemals while True 
+                    epd.sleep()
+                    logging.info("Putting display to sleep")
 
             logging.info("Clear...")
             epd.init(0)  # Initialize the display
