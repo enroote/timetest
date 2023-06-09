@@ -13,7 +13,7 @@ from API_init import fetch_data_from_Google
 #loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
 # time: show seconds?
-sec_ = True
+sec_ = False
 
 # Set up the GPIO channel
 GPIO.setmode(GPIO.BCM)
@@ -36,8 +36,6 @@ logging.basicConfig(level=logging.DEBUG)
 font_bold = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 font_thin = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 
-font24 = ImageFont.truetype(font_bold, 24)
-font28 = ImageFont.truetype(font_bold, 28)
 font_times = ImageFont.truetype(font_thin, 32)
 font_date  = ImageFont.truetype(font_thin, 36)
 font_clock = ImageFont.truetype(font_thin, 45)
@@ -48,7 +46,6 @@ ebbe_icon_path = '/home/pi/foehr_credentials/icons/ebbe.jpg'
 
 # Prepare a canvas to draw on
 Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
-
 
 def display_image_and_time(image_path):
     try:
