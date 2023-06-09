@@ -9,7 +9,7 @@ from clear_display import clear_all
 
 try:
     # Specify the image path
-    image_path = 'layout_37_flut.jpg'
+    image_path = '/home/pi/foehr_credentials/icons/bg_layout_37.jpg'
     
     #epd = epd3in7.EPD()
     #epd.init(1)
