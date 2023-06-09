@@ -89,6 +89,7 @@ def display_image_and_time(image_path):
         draw.text((col2, row2+20), time2, font=font_times, fill=0)
 
         print(f"Jetzt ist gerade {tide1}")
+        print(f"um {time1} Uhr")
 
         if tide1 =="Ebbe":
             Himage.paste(ebbe_icon, (col1, row1))
@@ -113,15 +114,17 @@ def display_image_and_time(image_path):
         #time.sleep(5)
 
         # Update the time
-        update_time(show_seconds=sec_)
+        update_time(show_seconds=sec_, time1)
         logging.info("Done updating time.")
         #time.sleep(5)
+
+        return(time1)
         
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
-def update_time(show_seconds=True):
+def update_time(show_seconds=True, critical_time):
     while True:
         try:
             logging.info("5.show time, partial update, just 1 Gray mode")
@@ -132,10 +135,7 @@ def update_time(show_seconds=True):
             time_image = Image.new('1', (epd.width, epd.height), 255)
             time_draw = ImageDraw.Draw(time_image)
             
-            current_time = datetime.now()
-            print(current_time < time1)
-            time.sleep(10)
-            while current_time < time1: # ehemals while True 
+            while datetime.now() < critical_time: # ehemals while True 
                 
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
@@ -148,10 +148,6 @@ def update_time(show_seconds=True):
                 time_draw.text((col1, row_date), time.strftime(date_format), font=font_date, fill=0)
 
                 epd.display_1Gray(epd.getbuffer(time_image))
-
-                #num = num + 1
-                #if num == 20:
-                    #break
 
             logging.info("Clear...")
             epd.init(0)  # Initialize the display
