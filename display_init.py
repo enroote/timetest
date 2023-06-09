@@ -162,8 +162,8 @@ def display_image_and_time(image_path):
         # Display the image
         epd.display_1Gray(epd.getbuffer(Himage))
         logging.info("Done displaying image.")
-        #time.sleep(5)
-
+        time.sleep(7)
+        print(tide_data[0])
         # Update the time
         update_time(next_tide_time=tide_data[0] , show_seconds=sec_)
         logging.info("Done updating time.")
