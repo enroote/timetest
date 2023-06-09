@@ -13,7 +13,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
-# test 
+# test NEU
 
 logging.basicConfig(level=logging.DEBUG)
 
