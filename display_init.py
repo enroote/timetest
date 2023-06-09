@@ -124,7 +124,7 @@ def display_image_and_time(image_path):
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
-def update_time(show_seconds=True,critical_time):
+def update_time(show_seconds=True,critical_time=datetime.now()):
     while True:
         try:
             logging.info("5.show time, partial update, just 1 Gray mode")
@@ -135,7 +135,7 @@ def update_time(show_seconds=True,critical_time):
             time_image = Image.new('1', (epd.width, epd.height), 255)
             time_draw = ImageDraw.Draw(time_image)
             
-            while datetime.now() < critical_time: # ehemals while True 
+            while datetime.now() <= critical_time: # ehemals while True 
                 
                 # date
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
