@@ -82,9 +82,9 @@ def update_time(show_seconds=True):
             num = 0
             while True:
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
-                if show_seconds:
+                if show_seconds==True:
                     time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_time, fill=0)
-                else:
+                if show_seconds==False:
                     time_draw.text((20, 20), time.strftime('%H:%M'), font=font_time, fill=0)
 
                 time_draw.text((50, 100), time.strftime('%d. %B %y'), font=font_date, fill=0)
