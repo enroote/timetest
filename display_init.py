@@ -125,6 +125,9 @@ def display_image_and_time(image_path):
 
 
 def update_time(show_seconds=True,critical_time=datetime.now()):
+    if critical_time is None:
+        critical_time = datetime.now()  # Set the default critical time to the current time
+
     while True:
         try:
             logging.info("5.show time, partial update, just 1 Gray mode")
@@ -136,6 +139,11 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
             time_draw = ImageDraw.Draw(time_image)
 
             #critical_time_ = datetime.strptime(critical_time, "%H:%M")
+
+            # Convert critical_time to datetime object
+            if isinstance(critical_time, str):
+                critical_time = datetime.strptime(critical_time, "%H:%M")
+                logging.info(f"datetime.now() >= critical_time: {datetime.now() >= critical_time:}") # 
 
             while True: # ehemals while True 
                 
@@ -153,8 +161,6 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
                 epd.sleep()
                 logging.info("Putting display to sleep")
 
-                critical_time_ = datetime.strptime(critical_time, "%H:%M")
-                logging.info(f"datetime.now() >= critical_time: {datetime.now() >= critical_time:}") # 
 
                 while critical_time_ > datetime.now(): # ehemals while True 
                     sleep(10)
