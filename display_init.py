@@ -135,7 +135,7 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
             time_image = Image.new('1', (epd.width, epd.height), 255)
             time_draw = ImageDraw.Draw(time_image)
 
-            critical_time = datetime.strptime(critical_time, "%H:%M")
+            critical_time_ = datetime.strptime(critical_time, "%H:%M")
             logging.info(f"datetime.now() >= critical_time: {datetime.now() >= critical_time:}") # 
 
             while True: # ehemals while True 
@@ -154,7 +154,7 @@ def update_time(show_seconds=True,critical_time=datetime.now()):
                 epd.sleep()
                 logging.info("Putting display to sleep")
 
-                while critical_time > datetime.now(): # ehemals while True 
+                while critical_time_ > datetime.now(): # ehemals while True 
                     sleep(10)
                     logging.info("sleeping")
 
