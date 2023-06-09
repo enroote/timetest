@@ -23,8 +23,7 @@ epd = epd3in7.EPD()
 
 logging.basicConfig(level=logging.DEBUG)
 
-# Prepare a canvas to draw on
-Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
+# time 
 
 # Load the font
 font_bold = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
@@ -35,6 +34,9 @@ font28 = ImageFont.truetype(font_bold, 28)
 font32 = ImageFont.truetype(font_bold, 32)
 font_date = ImageFont.truetype(font_thin, 36)
 font_time = ImageFont.truetype(font_thin, 45)
+
+# Prepare a canvas to draw on
+Himage = Image.new('1', (epd.width, epd.height), 255)  # 1 bit color
 
 def display_image_and_time(image_path):
     try:
@@ -60,14 +62,14 @@ def display_image_and_time(image_path):
         epd.display_1Gray(epd.getbuffer(Himage))
 
         # Update the time
-        update_time()
+        update_time(show_seconds=F)
 
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
 
 
 
-def update_time():
+def update_time(show_seconds=True):
     while True:
         try:
             logging.info("5.show time, partial update, just 1 Gray mode")
@@ -80,7 +82,11 @@ def update_time():
             num = 0
             while True:
                 time_draw.rectangle((0, 0, epd.width-2, epd.height-2), fill=255)  # Clear the entire image
-                time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_time, fill=0)
+                if show_seconds:
+                    time_draw.text((20, 20), time.strftime('%H:%M:%S'), font=font_time, fill=0)
+                else:
+                    time_draw.text((20, 20), time.strftime('%H:%M'), font=font_time, fill=0)
+
                 time_draw.text((50, 100), time.strftime('%d. %B %y'), font=font_date, fill=0)
 
                 epd.display_1Gray(epd.getbuffer(time_image))
