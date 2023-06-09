@@ -11,7 +11,8 @@ import RPi.GPIO as GPIO
 
 #loc.setlocale(loc.LC_ALL, 'de_DE.utf8')
 
-#YESYESYES!
+# time: show seconds?
+sec_ = True
 
 # Set up the GPIO channel
 GPIO.setmode(GPIO.BCM)
@@ -62,7 +63,7 @@ def display_image_and_time(image_path):
         epd.display_1Gray(epd.getbuffer(Himage))
 
         # Update the time
-        update_time(show_seconds=True)
+        update_time(show_seconds=sec_)
 
     except Exception as e:
         logging.error(f"Error occurred while displaying image and time: {e}")
