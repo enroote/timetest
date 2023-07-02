@@ -72,7 +72,7 @@ while True:
 
             tide1, tide2, time1, time2 = tide_data
             logging.info("Done storing data. Creating image ...")
-        z
+        
             # Background image
             img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
             flut_icon = Image.open(flut_icon_path).convert("1")  # Convert image to 1 bit color
