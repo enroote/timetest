@@ -133,9 +133,6 @@ while True:
             # update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
             # logging.info("Done updating time.")
             # time.sleep(5)      
-            
-        except Exception as e:
-            logging.error(f"Error occurred while displaying image and time: {e}")
     
             next_event = datetime.strptime(time1, "%H:%M")
             print("***********")
@@ -166,3 +163,6 @@ while True:
                 print("******************")
                 print("******************")
                 break
+
+        except Exception as e:
+            logging.error(f"Error occurred while displaying image and time: {e}")
