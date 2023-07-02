@@ -104,6 +104,7 @@ while True:
             print(time1full)
             print(time1full)
             print(type(time1full))
+            print(type(time1full))
             print(time1full)
             
             
