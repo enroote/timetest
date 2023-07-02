@@ -72,12 +72,7 @@ while True:
 
             tide1, tide2, time1, time2 = tide_data
             logging.info("Done storing data. Creating image ...")
-
-            print(time1)
-            print(time1)
-            print(time1)
-            print(time1)
-
+        
             # Background image
             img = Image.open(image_path).convert("1")  # Convert image to 1 bit color
             flut_icon = Image.open(flut_icon_path).convert("1")  # Convert image to 1 bit color
@@ -105,7 +100,13 @@ while True:
 
             print(f"Jetzt ist gerade {tide1}")
             print(f"um {time1} Uhr")
-
+            
+            print(time1)
+            print(time1)
+            print(type(time1))
+            print(time1)
+            
+            
             if tide1 =="Ebbe":
                 Himage.paste(ebbe_icon, (col1, row1))
                 Himage.paste(flut_icon, (col1, row2))
@@ -129,19 +130,18 @@ while True:
             time.sleep(7)
             print(tide_data[0])
             # Update the time
-            # update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
-            # logging.info("Done updating time.")
+            update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
+            logging.info("Done updating time.")
             #time.sleep(5)      
             
         except Exception as e:
             logging.error(f"Error occurred while displaying image and time: {e}")
-
-            i += 1
+    
         
             while now < time1:
-                timeleft = round((next_event[i] - now).total_seconds())
+                timeleft = round((time1 - now).total_seconds())
             
-                print(next_event[i].strftime("%H:%M"))
+                print(time1.strftime("%H:%M"))
                 print("waiting for next event in", timeleft, "s")
             
                 time.sleep(5)
