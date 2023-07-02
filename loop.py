@@ -70,18 +70,18 @@ while True:
             print("getting new data")
             print("******************")
 
-            # Create a new image with white background
-            sleep_image = Image.new("1", (epd.width, epd.height), 255)
-            sleep_image_draw = ImageDraw.Draw(sleep_image)
-            logging.info("Done creating sleep_image.")
-            #time.sleep(5)
+            ## Create a new image with white background
+            #sleep_image = Image.new("1", (epd.width, epd.height), 255)
+            #sleep_image_draw = ImageDraw.Draw(sleep_image)
+            #logging.info("Done creating sleep_image.")
+            ##time.sleep(5)
 
-            # Paste the resized image onto the white background
-            sleep_image_draw.text((col2, row1+20), "Daten werden geladen", font=10, fill=0)
-            epd.display_1Gray(epd.getbuffer(sleep_image))
-            logging.info("Done displaying sleep image.")
+            ## Paste the resized image onto the white background
+            #sleep_image_draw.text((col2, row1+20), "Daten werden geladen", font=10, fill=0)
+            #epd.display_1Gray(epd.getbuffer(sleep_image))
+            #logging.info("Done displaying sleep image.")
 
-            logging.info("Sleeping a Minute")
+            #logging.info("Sleeping a Minute")
             time.sleep(59)
 
 
