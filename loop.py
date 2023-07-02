@@ -70,7 +70,7 @@ while True:
             logging.info("Done fetching data. Storing data now ...")
             #time.sleep(5)
 
-            tide1, tide2, time1, time2 = tide_data
+            tide1, tide2, time1, time2, time1full, time2full = tide_data
             logging.info("Done storing data. Creating image ...")
         
             # Background image
@@ -134,7 +134,7 @@ while True:
             # logging.info("Done updating time.")
             # time.sleep(5)      
     
-            next_event = datetime.strptime(time1, "%H:%M")
+            next_event = datetime.strptime(time1full, "%H:%M")
             print("***********")
             print(now)
             print(next_event)

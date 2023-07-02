@@ -29,7 +29,11 @@ def fetch_data_from_Google():
     time1 = datetime.strptime(values[0][2], "%d.%m.%Y %H:%M:%S").strftime("%H:%M")
     time2 = datetime.strptime(values[1][2], "%d.%m.%Y %H:%M:%S").strftime("%H:%M")
 
-    return tide1, tide2, time1, time2
+    time1full = datetime.strptime(values[0][2], "%d.%m.%Y %H:%M:%S").strftime("%H:%M")
+    time2full = datetime.strptime(values[0][2], "%d.%m.%Y %H:%M:%S").strftime("%H:%M")
+
+
+    return tide1, tide2, time1, time2, time1full, time2full
 
 
 
