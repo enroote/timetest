@@ -130,14 +130,14 @@ while True:
             time.sleep(7)
             print(tide_data[0])
             # Update the time
-            update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
-            logging.info("Done updating time.")
-            #time.sleep(5)      
+            # update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
+            # logging.info("Done updating time.")
+            # time.sleep(5)      
             
         except Exception as e:
             logging.error(f"Error occurred while displaying image and time: {e}")
     
-            next_event = datetime.strptime(time, "%H:%M")
+            next_event = datetime.strptime(time1, "%H:%M")
             
             while now < next_event:
                 timeleft = round((next_event - now).total_seconds())
