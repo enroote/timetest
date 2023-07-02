@@ -65,10 +65,23 @@ while True:
         try:
 
             clear_all()
+            time.sleep(59)
 
             print("******************")
             print("getting new data")
             print("******************")
+
+            # Create a new image with white background
+            sleep_image = Image.new("1", (epd.width, epd.height), 255)
+            sleep_image_draw = ImageDraw.Draw(sleep_image)
+            logging.info("Done creating sleep_image.")
+            #time.sleep(5)
+
+            # Paste the resized image onto the white background
+            sleep_image_draw.text((col2, row1+20), "Daten werden geladen", font=10, fill=0)
+            epd.display_1Gray(epd.getbuffer(sleep_image))
+            logging.info("Done displaying sleep image.")
+
 
             tide_data = fetch_data_from_Google()
             logging.info("Done fetching data. Storing data now ...")
@@ -101,11 +114,7 @@ while True:
             Himage.paste(img, (0, 0))
             draw.text((col2, row1+20), time1, font=font_times, fill=0)
             draw.text((col2, row2+20), time2, font=font_times, fill=0)
-
-            print(f"Jetzt ist gerade {tide1}")
-            print(f"um {time1} Uhr")
             
-            print(time1full)
             print(time1full)
             print(type(time1full))
             print(time1full)
@@ -114,10 +123,12 @@ while True:
             if tide1 =="Ebbe":
                 Himage.paste(ebbe_icon, (col1, row1))
                 Himage.paste(flut_icon, (col1, row2))
+                print(f"Wasser sinkt bis {time1}")
 
             if tide1 =="Flut":
                 Himage.paste(flut_icon, (col1, row1))
                 Himage.paste(ebbe_icon, (col1, row2))
+                print(f"Wasser steigt bis {time1}")
 
             logging.info("Done pasting image.")
             #time.sleep(5)
@@ -159,8 +170,8 @@ while True:
                 time.sleep(5)
                 now = datetime.now()
             
-                print("day_cal:", day_cal)  # starting day
-                print("now:", int(now.strftime("%d")))  # today / now
+                print("Kalendertag der letzten Aktualisierung:", day_cal)  # starting day
+                print("Kalendertag jetzt:", int(now.strftime("%d")))  # today / now
             
                 if day_cal != int(now.strftime("%d")):  # checking if day has changed since start
                     break
