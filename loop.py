@@ -137,11 +137,12 @@ while True:
         except Exception as e:
             logging.error(f"Error occurred while displaying image and time: {e}")
     
-        
-            while now < time1:
-                timeleft = round((time1 - now).total_seconds())
+            next_event = datetime.strptime(time, "%H:%M")
             
-                print(time1.strftime("%H:%M"))
+            while now < next_event:
+                timeleft = round((next_event - now).total_seconds())
+            
+                print(next_event.strftime("%H:%M"))
                 print("waiting for next event in", timeleft, "s")
             
                 time.sleep(5)
