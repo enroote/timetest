@@ -101,10 +101,10 @@ while True:
             print(f"Jetzt ist gerade {tide1}")
             print(f"um {time1} Uhr")
             
-            print(time1)
-            print(time1)
-            print(type(time1))
-            print(time1)
+            print(time1full)
+            print(time1full)
+            print(type(time1full))
+            print(time1full)
             
             
             if tide1 =="Ebbe":
@@ -134,8 +134,7 @@ while True:
             # logging.info("Done updating time.")
             # time.sleep(5)      
     
-            #next_event = datetime.strptime(time1full, "%H:%M")
-            next_event = time1full
+            next_event = datetime.strptime(time1full, "%H:%M")
             print(type(next_event))
 
             print("***********")
