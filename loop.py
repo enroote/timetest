@@ -138,7 +138,10 @@ while True:
             logging.error(f"Error occurred while displaying image and time: {e}")
     
             next_event = datetime.strptime(time1, "%H:%M")
-            
+            print("***********")
+            print(now)
+            print(next_event)
+            print("***********")
             while now < next_event:
                 timeleft = round((next_event - now).total_seconds())
             
