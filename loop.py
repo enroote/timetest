@@ -6,6 +6,7 @@ import os
 import logging
 import RPi.GPIO as GPIO
 from API_init import fetch_data_from_Google
+from clear_display import clear_all
 
 now = datetime.now()
 next_event = [now + timedelta(seconds=60*2*i) for i in range(int((datetime(2024, 6, 30, 23, 0, 0) - now).total_seconds()/(60*2)))]
@@ -58,10 +59,13 @@ image_path = '/home/pi/foehr_credentials/icons/bg_layout_37.jpg'
 
 while True:
     now = datetime.now()
-    tenth_h = int(now.strftime("%M")) // 10  # defining start day
+    day_cal = int(now.strftime("%d"))  # defining start day
     
     while True:
         try:
+
+            clear_all()
+
             print("******************")
             print("getting new data")
             print("******************")
@@ -151,13 +155,13 @@ while True:
                 time.sleep(5)
                 now = datetime.now()
             
-                print("tenth:", tenth_h)  # starting day
-                print("now:", int(now.strftime("%M")) // 10)  # today / now
+                print("day_cal:", day_cal)  # starting day
+                print("now:", int(now.strftime("%d")))  # today / now
             
-                if tenth_h != int(now.strftime("%M")) // 10:  # checking if day has changed since start
+                if day_cal != int(now.strftime("%d")):  # checking if day has changed since start
                     break
                 
-            if tenth_h != int(now.strftime("%M")) // 10:  # checking if day has changed since start
+            if day_cal != int(now.strftime("%d")):  # checking if day has changed since start
                 print("******************")
                 print("******************")
                 print("******************")
