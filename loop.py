@@ -65,7 +65,6 @@ while True:
         try:
 
             clear_all()
-            time.sleep(59)
 
             print("******************")
             print("getting new data")
@@ -81,6 +80,9 @@ while True:
             sleep_image_draw.text((col2, row1+20), "Daten werden geladen", font=10, fill=0)
             epd.display_1Gray(epd.getbuffer(sleep_image))
             logging.info("Done displaying sleep image.")
+
+            logging.info("Sleeping a Minute")
+            time.sleep(59)
 
 
             tide_data = fetch_data_from_Google()
