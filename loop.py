@@ -134,7 +134,7 @@ while True:
             # logging.info("Done updating time.")
             # time.sleep(5)      
     
-            next_event = datetime.strptime(time1full, "%H:%M")
+            next_event = datetime.strptime(time1full, "%d.%m.%Y %H:%M:%S")
             print(type(next_event))
 
             print("***********")
