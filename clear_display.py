@@ -36,3 +36,4 @@ def clear_all():
         exit()
 
 
+clear_all()
