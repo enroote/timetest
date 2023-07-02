@@ -125,12 +125,10 @@ while True:
             # Update the time
             update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
             logging.info("Done updating time.")
-            #time.sleep(5)
-
-            return time1
-        
-            except Exception as e:
-            l   ogging.error(f"Error occurred while displaying image and time: {e}")
+            #time.sleep(5)      
+            
+        except Exception as e:
+            logging.error(f"Error occurred while displaying image and time: {e}")
     
 
             i += 1
