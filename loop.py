@@ -134,11 +134,15 @@ while True:
             # logging.info("Done updating time.")
             # time.sleep(5)      
     
-            next_event = datetime.strptime(time1full, "%H:%M")
+            #next_event = datetime.strptime(time1full, "%H:%M")
+            next_event = time1full
+            print(type(next_event))
+
             print("***********")
             print(now)
             print(next_event)
             print("***********")
+
             while now < next_event:
                 timeleft = round((next_event - now).total_seconds())
             
