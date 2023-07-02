@@ -131,7 +131,11 @@ while True:
             # Display the image
             epd.display_1Gray(epd.getbuffer(Himage))
             logging.info("Done displaying image.")
-            time.sleep(7)
+            
+            epd.sleep()  # Put the display into sleep mode
+            logging.info("Display sleeps.")
+
+            time.sleep(1)
             print(tide_data[0])
             # Update the time
             # update_time(next_tide_time=tide_data[2] , show_seconds=sec_)
